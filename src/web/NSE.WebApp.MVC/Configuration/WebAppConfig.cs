@@ -1,4 +1,6 @@
-﻿using NSE.WebApp.MVC.Extensions;
+﻿using Microsoft.AspNetCore.Localization;
+using NSE.WebApp.MVC.Extensions;
+using System.Globalization;
 
 namespace NSE.WebApp.MVC.Configuration
 {
@@ -9,6 +11,16 @@ namespace NSE.WebApp.MVC.Configuration
             services.AddControllersWithViews();
 
             services.Configure<AppSettings>(configuration);
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("Total",
+                    builder =>
+                        builder
+                            .AllowAnyOrigin()
+                            .AllowAnyMethod()
+                            .AllowAnyHeader());
+            });
         }
 
         public static void UseMvcConfiguration(this IApplicationBuilder app, IWebHostEnvironment env)
@@ -31,7 +43,17 @@ namespace NSE.WebApp.MVC.Configuration
 
             app.UseRouting();
 
+            app.UseCors("Total");
+
             app.UseIdentityConfiguration();
+
+            var supportedCultures = new[] { new CultureInfo("pt-BR") };
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("pt-BR"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
 
             app.UseMiddleware<ExceptionMiddleware>();
 
@@ -39,7 +61,7 @@ namespace NSE.WebApp.MVC.Configuration
             {
                 endpoints.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{controller=Catalogo}/{action=Index}/{id?}");
             });
         }
     }
