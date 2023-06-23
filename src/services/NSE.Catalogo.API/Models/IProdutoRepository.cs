@@ -1,4 +1,4 @@
-﻿using NSE.Core.DomainObjects;
+﻿using NSE.Core.Data;
 
 namespace NSE.Catalogo.API.Models
 {
