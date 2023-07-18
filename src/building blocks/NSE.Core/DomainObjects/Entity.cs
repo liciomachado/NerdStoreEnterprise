@@ -15,7 +15,7 @@ namespace NSE.Core.DomainObjects
             Id = Guid.NewGuid();
         }
 
-        public void AdicionarEvent(Event evento)
+        public void AdicionarEvento(Event evento)
         {
             _notificacoes = _notificacoes ?? new List<Event>();
             _notificacoes.Add(evento);

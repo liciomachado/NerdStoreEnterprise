@@ -14,10 +14,6 @@
     </ItemGroup>
 
     <ItemGroup>
-        <Folder Include="Data\Mappings\" />
-    </ItemGroup>
-
-    <ItemGroup>
         <ProjectReference Include="..\NSE.Pedidos.Domain\NSE.Pedidos.Domain.csproj" />
     </ItemGroup>
 

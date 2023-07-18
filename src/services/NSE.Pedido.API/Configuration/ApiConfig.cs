@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using NSE.Carrinho.API.Data;
+using NSE.Pedidos.Infra.Data;
 using NSE.WebApi.Core.Identidade;
 
 namespace NSE.Pedido.API.Configuration
@@ -11,7 +11,7 @@ namespace NSE.Pedido.API.Configuration
             services.AddControllers();
             services.AddEndpointsApiExplorer();
 
-            services.AddDbContext<CarrinhoContext>(options =>
+            services.AddDbContext<PedidosContext>(options =>
                 options.UseMySql(configuration.GetConnectionString("DefaultConnection"), new MySqlServerVersion(new Version(8, 0, 20))));
 
             services.AddCors(options =>

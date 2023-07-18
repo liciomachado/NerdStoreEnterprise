@@ -30,7 +30,7 @@ namespace NSE.Clientes.API.Application.Commands
 
             _clienteRepository.Adicionar(cliente);
 
-            cliente.AdicionarEvent(new ClienteRegistradoEvent(request.Id, request.Nome, request.Email, request.Cpf));
+            cliente.AdicionarEvento(new ClienteRegistradoEvent(request.Id, request.Nome, request.Email, request.Cpf));
 
             return await PersistirDados(_clienteRepository.UnitOfWork);
         }
