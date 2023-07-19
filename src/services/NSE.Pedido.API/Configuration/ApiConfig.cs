@@ -2,7 +2,7 @@
 using NSE.Pedidos.Infra.Data;
 using NSE.WebApi.Core.Identidade;
 
-namespace NSE.Pedido.API.Configuration
+namespace NSE.Pedidos.API.Configuration
 {
     public static class ApiConfig
     {

@@ -1,13 +1,13 @@
 ﻿using FluentValidation.Results;
 using MediatR;
 using NSE.Core.Messages;
-using NSE.Pedido.API.Application.DTO;
+using NSE.Pedidos.API.Application.DTO;
 using NSE.Pedidos.API.Application.Events;
 using NSE.Pedidos.Domain.Pedidos;
 using NSE.Pedidos.Domain.Vouchers;
 using NSE.Pedidos.Domain.Vouchers.Specs;
 
-namespace NSE.Pedido.API.Application.Commands
+namespace NSE.Pedidos.API.Application.Commands
 {
     public class PedidoCommandHandler : CommandHandler, IRequestHandler<AdicionarPedidoCommand, ValidationResult>
     {
@@ -50,7 +50,7 @@ namespace NSE.Pedido.API.Application.Commands
             return await PersistirDados(_pedidoRepository.UnitOfWork);
         }
 
-        private Pedidos.Domain.Pedidos.Pedido MapearPedido(AdicionarPedidoCommand message)
+        private Pedido MapearPedido(AdicionarPedidoCommand message)
         {
             var endereco = new Endereco
             {
@@ -63,7 +63,7 @@ namespace NSE.Pedido.API.Application.Commands
                 Estado = message.Endereco.Estado
             };
 
-            var pedido = new Pedidos.Domain.Pedidos.Pedido(message.ClienteId, message.ValorTotal,
+            var pedido = new Pedido(message.ClienteId, message.ValorTotal,
                 message.PedidoItems.Select(PedidoItemDTO.ParaPedidoItem).ToList(),
                 message.VoucherUtilizado, message.Desconto);
 
@@ -71,7 +71,7 @@ namespace NSE.Pedido.API.Application.Commands
             return pedido;
         }
 
-        private async Task<bool> AplicarVoucher(AdicionarPedidoCommand message, Pedidos.Domain.Pedidos.Pedido pedido)
+        private async Task<bool> AplicarVoucher(AdicionarPedidoCommand message, Pedido pedido)
         {
             if (!message.VoucherUtilizado) return true;
 
@@ -97,7 +97,7 @@ namespace NSE.Pedido.API.Application.Commands
             return true;
         }
 
-        private bool ValidarPedido(Pedidos.Domain.Pedidos.Pedido pedido)
+        private bool ValidarPedido(Pedido pedido)
         {
             var pedidoValorOriginal = pedido.ValorTotal;
             var pedidoDesconto = pedido.Desconto;
@@ -119,7 +119,7 @@ namespace NSE.Pedido.API.Application.Commands
             return true;
         }
 
-        public bool ProcessarPagamento(Pedidos.Domain.Pedidos.Pedido pedido)
+        public bool ProcessarPagamento(Pedido pedido)
         {
             return true;
         }

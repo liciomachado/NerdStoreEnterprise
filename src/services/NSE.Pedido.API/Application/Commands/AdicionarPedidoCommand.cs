@@ -1,8 +1,8 @@
 ﻿using FluentValidation;
 using NSE.Core.Messages;
-using NSE.Pedido.API.Application.DTO;
+using NSE.Pedidos.API.Application.DTO;
 
-namespace NSE.Pedido.API.Application.Commands
+namespace NSE.Pedidos.API.Application.Commands
 {
     public class AdicionarPedidoCommand : Command
     {
