@@ -1,25 +1,20 @@
+using MediatR;
+using NSE.Pagamentos.API.Configuration;
+using NSE.WebApi.Core.Identidade;
+
 var builder = WebApplication.CreateBuilder(args);
+var configuration = builder.Configuration;
 
-// Add services to the container.
+builder.Services.AddApiConfiguration(configuration);
+builder.Services.AddJwtConfiguration(configuration);
+builder.Services.RegisterServices();
+builder.Services.AddSwaggerConfiguration();
+builder.Services.AddMediatR(typeof(Program));
+builder.Services.AddMessageBusConfiguration(configuration);
 
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+app.UseApiConfiguration(app.Environment);
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-app.UseHttpsRedirection();
-
-app.UseAuthorization();
-
-app.MapControllers();
-
+app.UseSwaggerConfiguration();
 app.Run();

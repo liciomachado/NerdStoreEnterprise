@@ -39,7 +39,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.Catalogo.API", "src\ser
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.Clientes.API", "src\services\NSE.Cliente.API\NSE.Clientes.API.csproj", "{F123ED27-736C-4348-92BA-A1F7DBE2F94E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.Pagamento.API", "src\services\NSE.Pagamento.API\NSE.Pagamento.API.csproj", "{1D54BD86-A8AB-41DF-B670-83BD55DC7305}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.Pagamentos.API", "src\services\NSE.Pagamento.API\NSE.Pagamentos.API.csproj", "{1D54BD86-A8AB-41DF-B670-83BD55DC7305}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.Pedidos.API", "src\services\NSE.Pedido.API\NSE.Pedidos.API.csproj", "{D4410050-1DF9-446D-BDEC-42597A8F74B4}"
 EndProject
@@ -60,6 +60,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NSE.Pedidos.Domain", "src\services\NSE.Pedidos.Domain\NSE.Pedidos.Domain.csproj", "{1E5474EE-07FC-412A-8DC6-62613A17427D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSE.Pedidos.Infra", "src\services\NSE.Pedidos.Infra\NSE.Pedidos.Infra.csproj", "{FA1A5E52-D62B-4052-88D8-E31F2DC88F8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NSE.Pagamentos.NerdsPag", "src\services\NSE.Pagamentos.NerdsPag\NSE.Pagamentos.NerdsPag.csproj", "{B15AB3B3-923F-46E6-BFD8-56DDD95804E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -119,6 +121,10 @@ Global
 		{FA1A5E52-D62B-4052-88D8-E31F2DC88F8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FA1A5E52-D62B-4052-88D8-E31F2DC88F8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FA1A5E52-D62B-4052-88D8-E31F2DC88F8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B15AB3B3-923F-46E6-BFD8-56DDD95804E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B15AB3B3-923F-46E6-BFD8-56DDD95804E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B15AB3B3-923F-46E6-BFD8-56DDD95804E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B15AB3B3-923F-46E6-BFD8-56DDD95804E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -152,6 +158,7 @@ Global
 		{E6A89EE9-59E2-40A9-AB68-A2301DD1C402} = {3730C43E-5E66-4A68-BC7F-F5FA5D3685CE}
 		{1E5474EE-07FC-412A-8DC6-62613A17427D} = {A2437D89-40FF-40C2-AC69-0C3F2B12A40B}
 		{FA1A5E52-D62B-4052-88D8-E31F2DC88F8B} = {A2437D89-40FF-40C2-AC69-0C3F2B12A40B}
+		{B15AB3B3-923F-46E6-BFD8-56DDD95804E2} = {7B450BD3-28E6-465D-9F0C-68F3B1D4DEE3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87482137-BFED-4E83-ABBA-77270E78D646}
