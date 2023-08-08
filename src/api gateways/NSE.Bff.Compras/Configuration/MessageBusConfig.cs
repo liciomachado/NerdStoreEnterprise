@@ -1,4 +1,4 @@
-﻿namespace NSE.Bff.Compras.Configuration.Configuration
+﻿namespace NSE.Bff.Compras.Configuration
 {
     public static class MessageBusConfig
     {
