@@ -22,7 +22,7 @@ namespace NSE.Bff.Compras.Services
 
         public async Task<ItemProdutoDTO> ObterPorId(Guid id)
         {
-            var response = await _httpClient.GetAsync($"/catalogo/produtos/{id}");
+            var response = await _httpClient.GetAsync($"/api/catalogo/produtos/{id}");
 
             TratarErrosResponse(response);
 
@@ -33,7 +33,7 @@ namespace NSE.Bff.Compras.Services
         {
             var idsRequest = string.Join(",", ids);
 
-            var response = await _httpClient.GetAsync($"/catalogo/produtos/lista/{idsRequest}/");
+            var response = await _httpClient.GetAsync($"/api/catalogo/produtos/lista/{idsRequest}/");
 
             TratarErrosResponse(response);
 

@@ -1,5 +1,4 @@
-﻿using Dapper;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using NSE.Catalogo.API.Models;
 using NSE.Core.Data;
 
@@ -18,25 +17,28 @@ namespace NSE.Catalogo.API.Data.Repository
 
         public async Task<PagedResult<Produto>> ObterTodos(int pageSize, int pageIndex, string query = null)
         {
-            //return await _context.Produtos.AsNoTracking()
-            //    .Skip(pageSize * (pageIndex - 1))
-            //    .Take(pageSize)
-            //    .Where(c => c.Nome.Contains(query))
-            //    .ToListAsync();
+            var querable = _context.Produtos.AsNoTracking()
+                .Skip(pageSize * (pageIndex - 1))
+                .Take(pageSize);
 
-            var sql = @$"SELECT * FROM Produtos 
-                      WHERE (@Nome IS NULL OR Nome LIKE '%' + @Nome + '%') 
-                      ORDER BY [Nome] 
-                      OFFSET {pageSize * (pageIndex - 1)} ROWS 
-                      FETCH NEXT {pageSize} ROWS ONLY 
-                      SELECT COUNT(Id) FROM Produtos 
-                      WHERE (@Nome IS NULL OR Nome LIKE '%' + @Nome + '%')";
+            if (query != null) querable = querable.Where(c => c.Nome.Contains(query));
+            var produtos = await querable.ToListAsync();
 
-            var multi = await _context.Database.GetDbConnection()
-                .QueryMultipleAsync(sql, new { Nome = query });
+            var total = _context.Produtos.Count();
 
-            var produtos = multi.Read<Produto>();
-            var total = multi.Read<int>().FirstOrDefault();
+            //var sql = @$"SELECT * FROM Produtos 
+            //          WHERE (@Nome IS NULL OR Nome LIKE '%' + @Nome + '%') 
+            //          ORDER BY [Nome] 
+            //          OFFSET {pageSize * (pageIndex - 1)} ROWS 
+            //          FETCH NEXT {pageSize} ROWS ONLY 
+            //          SELECT COUNT(Id) FROM Produtos 
+            //          WHERE (@Nome IS NULL OR Nome LIKE '%' + @Nome + '%')";
+
+            //var multi = await _context.Database.GetDbConnection()
+            //    .QueryMultipleAsync(sql, new { Nome = query });
+
+            //var produtos = multi.Read<Produto>();
+            //var total = multi.Read<int>().FirstOrDefault();
 
             return new PagedResult<Produto>()
             {

@@ -27,7 +27,7 @@ namespace NSE.WebApp.MVC.Services
 
         public async Task<PagedViewModel<ProdutoViewModel>> ObterTodos(int pageSize, int pageIndex, string query = null)
         {
-            var response = await _httpClient.GetAsync($"/catalogo/produtos?ps={pageSize}&page={pageIndex}&q={query}");
+            var response = await _httpClient.GetAsync($"api/catalogo/produtos?ps={pageSize}&page={pageIndex}&q={query}");
 
             TratarErrosResponse(response);
 

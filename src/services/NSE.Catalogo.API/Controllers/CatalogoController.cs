@@ -2,7 +2,6 @@
 using Microsoft.AspNetCore.Mvc;
 using NSE.Catalogo.API.Models;
 using NSE.WebApi.Core.Controllers;
-using NSE.WebApi.Core.Identidade;
 
 namespace NSE.Catalogo.API.Controllers
 {
@@ -24,7 +23,7 @@ namespace NSE.Catalogo.API.Controllers
             return await _produtoRepository.ObterTodos(ps, page, q);
         }
 
-        [ClaimsAuthorize("Catalogo", "Ler")]
+        [AllowAnonymous]
         [HttpGet("produtos/{id}")]
         public async Task<Produto> ProdutoDetalhe(Guid id)
         {
